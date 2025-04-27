@@ -18,5 +18,3 @@ temp.py
 
 .coverage
 htmlcov
-
-uv.lock

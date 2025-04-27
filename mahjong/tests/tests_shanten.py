@@ -1,4 +1,4 @@
-from mahjong.tile import TilesConverter
+from tile import TilesConverter
 
 from mahjong.shanten import Shanten
 

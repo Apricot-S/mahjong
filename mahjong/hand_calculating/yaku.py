@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 from collections.abc import Collection, Sequence
 from typing import Optional
 
 
-class Yaku:
+class Yaku(ABC):
     yaku_id: Optional[int]
     tenhou_id: Optional[int]
     name: Optional[str]
@@ -23,6 +24,7 @@ class Yaku:
         # for calls in array
         return self.__str__()
 
+    @abstractmethod
     def is_condition_met(self, hand: Collection[Sequence[int]], *args) -> bool:
         """
         Is this yaku exists in the hand?
@@ -32,6 +34,7 @@ class Yaku:
         """
         raise NotImplementedError
 
+    @abstractmethod
     def set_attributes(self) -> None:
         """
         Set id, name, han related to the yaku

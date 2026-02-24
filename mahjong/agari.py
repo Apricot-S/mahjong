@@ -2,13 +2,35 @@ from collections.abc import Collection, Sequence
 
 
 class Agari:
+    """Agari (winning hand) detection."""
+
     @staticmethod
     def is_agari(tiles_34: Sequence[int], open_sets_34: Collection[Sequence[int]] | None = None) -> bool:
         """
-        Determine whether the hand is a winning hand (agari)
-        :param tiles_34: 34 tiles format array
-        :param open_sets_34: array of arrays of 34 tiles format
-        :return: boolean
+        Determine whether the given tiles form a complete hand structure.
+
+        Validate the tile arrangement only (4 melds + 1 pair, seven pairs, or thirteen orphans),
+        not yaku or scoring. When open sets are provided, the declared meld tiles are subtracted
+        before checking.
+
+        The concealed portion can be passed alone without melds, which is valid
+        for any number of melds (0-4) plus 1 pair:
+
+        0 melds + 1 pair (valid hand):
+        >>> tiles_34 = [0] * 34
+        >>> tiles_34[0] = 2
+        >>> Agari.is_agari(tiles_34)
+        True
+
+        1 meld (triplet) without a pair is not a valid hand:
+        >>> tiles_34 = [0] * 34
+        >>> tiles_34[0] = 3
+        >>> Agari.is_agari(tiles_34)
+        False
+
+        :param tiles_34: hand in 34 tiles format array
+        :param open_sets_34: declared melds as arrays of tile indices in 34 format
+        :return: True if the hand is complete
         """
         if open_sets_34:
             # subtract declared meld tiles so the algorithm checks only the closed portion

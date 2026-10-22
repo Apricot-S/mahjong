@@ -4,10 +4,10 @@ on:
   push:
     branches: [master]
     paths:
-      - .github/workflows/**
+      - .github/**/*.yml
   pull_request:
     paths:
-      - .github/workflows/**
+      - .github/**/*.yml
   workflow_dispatch:
 
 permissions:

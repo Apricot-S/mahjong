@@ -20,17 +20,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install actionlint
-        id: get_actionlint
-        shell: bash
-        run: |
-          bash <(curl -fsSL \
-            https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) \
-            1.7.12
-
       - name: Lint workflows
-        shell: bash
-        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        uses: docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 # v1.7.12
+        with:
+          args: -color
 
   zizmor:
     name: zizmor

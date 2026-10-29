@@ -91,14 +91,15 @@ jobs:
         run: uv sync --locked --no-default-groups --group test
 
       # GraalPy 24.0 expects a different pyvenv.cfg home than uv generates.
-      # Use its standard venv and pip, including for isolated builds.
+      # Create its standard venv, then use uv without creating isolated build environments.
       - name: Install libs with GraalPy 3.10 workaround
         if: matrix.python-version == 'graalpy3.10'
         run: |
           uv python install graalpy3.10
           "$(uv python find graalpy3.10)" -m venv .venv
           uv export --locked --no-default-groups --group test --no-emit-project --no-hashes --output-file "$RUNNER_TEMP/requirements-test.txt"
-          .venv/bin/python -m pip install -r "$RUNNER_TEMP/requirements-test.txt" -e .
+          uv pip install --python .venv/bin/python -r "$RUNNER_TEMP/requirements-test.txt" "setuptools>=77.0.3"
+          uv pip install --python .venv/bin/python --no-build-isolation -e .
 
       - name: Test with python ${{ matrix.python-version }}
         if: ${{ !startsWith(matrix.python-version, 'graalpy') }}

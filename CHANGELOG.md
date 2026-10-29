@@ -4,8 +4,24 @@ Releases History
 ## Unreleased
 
 <!-- unreleased:start -->
+### Important changes
 
+Fork-only rehearsal: preserve this hand-written explanation on refresh. No package will be published.
 <!-- unreleased:end -->
+
+<!-- release:2.2.0.dev1:start -->
+## 2.2.0.dev1 (2026-10-29)
+
+<!-- manual:start -->
+### Important changes
+
+Fork-only rehearsal: preserve this hand-written explanation on refresh. No package will be published.
+<!-- manual:end -->
+
+<!-- generated:start -->
+**Full Changelog**: https://github.com/Apricot-S/mahjong/compare/v2.1.0...v2.2.0.dev1
+<!-- generated:end -->
+<!-- release:2.2.0.dev1:end -->
 
 2.1.0 (Oct 24, 2026)
 -------------------

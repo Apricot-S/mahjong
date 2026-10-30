@@ -11,6 +11,7 @@ Releases History
 ## 2.2.0.dev1 (2026-10-30)
 
 <!-- manual:start -->
+Fork-only simplified workflow rehearsal: reviewed notes require no regeneration.
 
 <!-- manual:end -->
 
